@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Bookers2Ver2</title>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="sN8+cuf5Sy5ZEuftboaNi4vTYTzFm53YNTVqAJw9aXZeVRE0Xw9u8jps02Kkq2PHOQS7puVrD5LteW+7tpJftw==" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" media="all" href="/assets/application-16605eadccf37c23d1fa922dd614f45b9f2cf25723e2e4032f1975b02ea7d11f.css" data-turbolinks-track="reload" />
+    <script src="/assets/application-3ac47b8571e58aab844e8d0a988f0f55d8a16c1a75953470343f79cf1bec8528.js" data-turbolinks-track="reload"></script>
+  </head>
+  <body>
+    <header>
+
+</header>
+      <main>
+        <p id="notice"></p>
+        <div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+
+
+<h2>Sign up</h2>
+
+<%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

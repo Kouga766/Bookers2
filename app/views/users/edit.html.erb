@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2Ver2</title>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="9Qey17r/vc9NeO/ko1NDli9sp23Gj7OqR0jSk4tm00GGYaXbMYkqzbiCjnc5zRiV4fMVED6sLzObE5dRICe+cg==" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" media="all" href="/assets/application-16605eadccf37c23d1fa922dd614f45b9f2cf25723e2e4032f1975b02ea7d11f.css" data-turbolinks-track="reload" />
+    <script src="/assets/application-3ac47b8571e58aab844e8d0a988f0f55d8a16c1a75953470343f79cf1bec8528.js" data-turbolinks-track="reload"></script>
+  </head>
+  <body>
+
+      <main>
+        <p id="notice"></p>
+        <div class='container'>
+  <div class='row'>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>User info</h2>
+   <%= form_with model:@user, local:true do |f| %>
+
+     <label for="inputName">Name</label>
+      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"Name"%>
+      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+      <label for="inputImage">Image</label>
+      <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+
+      <label for="user_introduction">Introduction</label>
+     <%= f.text_field :Introduction%>
+
+      <%= f.submit "Updeta User" %>
+    <% end %>
+  </div>
+
+      </main>
+    <footer>
+  <div class='container mt-5'>
+  	<div class='row'>
+    	<div class='mx-auto'>
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>
