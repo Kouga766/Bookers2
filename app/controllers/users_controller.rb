@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-
-
+    @books = Book.where(user_id: @user.id)
+    @book = Book.new
   end
 
   def new
@@ -13,11 +13,22 @@ class UsersController < ApplicationController
     @user_image = User.new(user_image_params)
     @user_image.user_id = current_user.id
     @user_image.save
+
+     @book = Book.new(book_params)
+     @book.user_id = current_user.id
+    if @book.save
+      flash[:createdflag] = true
+      redirect_to book_path(@book.id)
+    else
+      @books=Book.all
+      render:index
+    end
   end
 
   def index
     @user_images = User.all
-
+    @user = User.all
+    @books = Book.all
   end
 
 

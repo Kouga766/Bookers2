@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   get 'users/new'
-  get 'homes/about'
-
+  get '/home/about' => 'homes#about'
+  post 'books' => 'books#create'
   resources :books
   resources :users
 
