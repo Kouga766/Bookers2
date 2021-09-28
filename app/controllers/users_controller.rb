@@ -29,11 +29,22 @@ class UsersController < ApplicationController
     @user_images = User.all
     @user = User.all
     @books = Book.all
+    @book = Book.new
   end
 
 
   def edit
     @user = User.find(params[:id])
+     @user = User.new
+     @user_id = current_user.id
+    if @user.save
+      flash[:createdflag] = true
+      redirect_to edit_user_path(@user.id)
+    else
+      @users=User.all
+      render:edit
+
+    end
   end
 
   def update
@@ -51,7 +62,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
 
