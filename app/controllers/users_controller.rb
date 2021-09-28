@@ -35,22 +35,23 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-     @user = User.new
-     @user_id = current_user.id
-    if @user.save
-      flash[:createdflag] = true
-      redirect_to edit_user_path(@user.id)
-    else
-      @users=User.all
-      render:edit
-
+    if @user != current_user
+      redirect_to user_path(current_user)
     end
   end
 
   def update
      @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      flash[:createdflag] = true
+      flash[:notice]= "You have updated user successfully."
+      redirect_to user_path(@user.id)
+
+    else
+
+      render:edit
+
+    end
   end
 
   def destroy

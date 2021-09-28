@@ -7,6 +7,9 @@ class BooksController < ApplicationController
   def edit
     @books = Book.all
     @book = Book.find(params[:id])
+    unless @book.user == current_user
+    redirect_to books_path
+    end
   end
 
   def create
